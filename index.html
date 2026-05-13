@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Buns 50 — Hamburger Artigianale | Terlizzi</title>
+<title>Buns 50</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Lilita+One&display=swap" rel="stylesheet">
@@ -15,14 +15,13 @@
 <nav id="navbar">
   <div class="container">
     <div class="nav-inner">
-      <a href="" class="nav-logo"><img src="img/logo1.png" alt="Buns 50" class="nav-logo-img"></a>
+      <a href="" class="nav-logo"><img src="img/logo/logo1.png" alt="Buns 50" class="nav-logo-img"></a>
       <ul class="nav-links" id="navLinks">
         <li><a href="#menu">Menu</a></li>
         <li><a href="#promo">Promo</a></li>
         <li><a href="#builder">Crea il tuo</a></li>
-        <li><a href="#gallery">Gallery</a></li>
         <li><a href="#contacts">Contatti</a></li>
-        <li><a href="#builder" class="nav-cta">Ordina ora</a></li>
+        <li><a href="#menu" class="nav-cta">Ordina ora</a></li>
       </ul>
       <div class="burger-icon" id="navToggle">
         <span></span><span></span><span></span>
@@ -36,7 +35,7 @@
   <div class="hero-bg"></div>
   <div class="container">
     <div class="hero-content">
-      <img src="img/logo2.png" alt="Il Gusto Autentico" class="hero-logo2">
+      <img src="img/logo/logo2.png" alt="Il Gusto Autentico" class="hero-logo2">
       <p class="hero-sub">Ingredienti freschi selezionati, ricette originali e la passione di chi ama davvero il buon cibo. Questo è Buns&nbsp;50.</p>
       <div class="hero-btns">
         <a href="#builder" class="btn btn-primary">
@@ -121,117 +120,646 @@
     <div class="menu-head">
       <div>
         <p class="eyebrow">Il Nostro Menu</p>
-        <h2 class="sec-title">I NOSTRI <span>PANINI</span></h2>
+        <h2 class="sec-title">I NOSTRI <span>PRODOTTI</span></h2>
       </div>
       <div class="menu-tabs">
-        <button class="menu-tab active" data-filter="all">Tutti</button>
-        <button class="menu-tab" data-filter="classic">Classici</button>
-        <button class="menu-tab" data-filter="special">Speciali</button>
-        <button class="menu-tab" data-filter="chicken">Pollo</button>
+        <button class="menu-tab active" data-filter="burger">Burgers</button>
+        <button class="menu-tab" data-filter="panino">Panini</button>
+        <button class="menu-tab" data-filter="fritto">Fritti</button>
+        <button class="menu-tab" data-filter="starter">Antipasti</button>
+        <button class="menu-tab" data-filter="poke">Pokè</button>
+        <button class="menu-tab" data-filter="bevanda">Bevande</button>
+        <button class="menu-tab" data-filter="birra">Birre</button>
+        <button class="menu-tab" data-filter="vino">Vini</button>
+        <button class="menu-tab" data-filter="bollicine">Bollicine</button>
       </div>
     </div>
 
     <div class="menu-grid" id="menuGrid">
 
-      <div class="menu-card reveal" data-cat="classic">
+      <!-- ANTIPASTI -->
+      <div class="menu-card reveal" data-cat="starter">
         <div class="card-img">
-          <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&q=80" alt="Buns Classic" loading="lazy">
-          <span class="card-badge">€9</span>
-        </div>
-        <div class="card-body">
-          <h3 class="card-name">Buns Classic</h3>
-          <p class="card-desc">Doppia carne 150g, cheddar fuso, lattuga iceberg, pomodoro fresco, cipolla caramellata, salsa segreta Buns&nbsp;50</p>
-          <div class="card-foot">
-            <span class="card-price">€9,00</span>
-            <button class="card-btn" onclick="orderItem('Buns Classic',9)">Aggiungi +</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="menu-card reveal" data-cat="special">
-        <div class="card-img">
-          <img src="https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=600&q=80" alt="Smoky BBQ" loading="lazy">
-          <span class="card-badge">€11</span>
-        </div>
-        <div class="card-body">
-          <h3 class="card-name">Smoky BBQ</h3>
-          <p class="card-desc">Carne 200g, bacon croccante, cheddar affumicato, onion rings, salsa BBQ artigianale, senape al miele</p>
-          <div class="card-foot">
-            <span class="card-price">€11,00</span>
-            <button class="card-btn" onclick="orderItem('Smoky BBQ',11)">Aggiungi +</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="menu-card reveal" data-cat="special">
-        <div class="card-img">
-          <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=600&q=80" alt="Spicy Devil" loading="lazy">
-          <span class="card-badge">€10</span>
-        </div>
-        <div class="card-body">
-          <h3 class="card-name">Spicy Devil</h3>
-          <p class="card-desc">Carne 200g, jalapeños freschi, cipolla rossa marinata, cheddar piccante, salsa habanero fatta in casa</p>
-          <div class="card-foot">
-            <span class="card-price">€10,00</span>
-            <button class="card-btn" onclick="orderItem('Spicy Devil',10)">Aggiungi +</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="menu-card reveal" data-cat="special">
-        <div class="card-img">
-          <img src="https://images.unsplash.com/photo-1580013759032-c96505e24c1f?w=600&q=80" alt="Truffle King" loading="lazy">
-          <span class="card-badge">€13</span>
-        </div>
-        <div class="card-body">
-          <h3 class="card-name">Truffle King</h3>
-          <p class="card-desc">Carne premium 200g, funghi trifolati, provolone del Monaco, rucola fresca, mayo al tartufo nero</p>
-          <div class="card-foot">
-            <span class="card-price">€13,00</span>
-            <button class="card-btn" onclick="orderItem('Truffle King',13)">Aggiungi +</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="menu-card reveal" data-cat="chicken">
-        <div class="card-img">
-          <img src="https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=600&q=80" alt="Crispy Chicken" loading="lazy">
-          <span class="card-badge">€9</span>
-        </div>
-        <div class="card-body">
-          <h3 class="card-name">Crispy Chicken</h3>
-          <p class="card-desc">Petto di pollo croccante, coleslaw artigianale, pickles marinati, salsa ranch cremosa</p>
-          <div class="card-foot">
-            <span class="card-price">€9,00</span>
-            <button class="card-btn" onclick="orderItem('Crispy Chicken',9)">Aggiungi +</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="menu-card reveal" data-cat="classic">
-        <div class="card-img">
-          <img src="https://images.unsplash.com/photo-1565299507177-b0ac66763828?w=600&q=80" alt="Green Garden" loading="lazy">
+          <img src="img/prodotti/antipasti/mortadella-alla-brace.jpg" alt="Mortadella alla brace" loading="lazy">
           <span class="card-badge">€8</span>
         </div>
         <div class="card-body">
-          <h3 class="card-name">Green Garden</h3>
-          <p class="card-desc">Burger vegetale, guacamole fresco, pomodoro, spinacino, cipolla di Tropea, mayo alla paprika</p>
+          <h3 class="card-name">Mortadella alla brace</h3>
+          <p class="card-desc">Mortadella Bologna alla brace</p>
           <div class="card-foot">
             <span class="card-price">€8,00</span>
-            <button class="card-btn" onclick="orderItem('Green Garden',8)">Aggiungi +</button>
+            <button class="card-btn" onclick="orderItem('Mortadella alla brace',8)">Aggiungi +</button>
           </div>
         </div>
       </div>
 
-    </div>
+      <div class="menu-card reveal" data-cat="starter">
+        <div class="card-img">
+          <img src="img/prodotti/antipasti/olive.jpg" alt="Olive" loading="lazy">
+          <span class="card-badge">€3,50</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-name">Olive</h3>
+          <p class="card-desc">Olive</p>
+          <div class="card-foot">
+            <span class="card-price">€3,50</span>
+            <button class="card-btn" onclick="orderItem('Olive',3.5)">Aggiungi +</button>
+          </div>
+        </div>
+      </div>
 
-    <!-- SIDES -->
-    <h3 class="sec-title" style="font-size:2rem;margin-top:72px;margin-bottom:28px;">EXTRA &amp; <span>CONTORNI</span></h3>
-    <div class="sides-grid">
-      <div class="side-item reveal"><div><div class="side-name">🍟 Patatine Fritte</div><div class="side-sub">Croccanti, appena fritte</div></div><div class="side-price">€3</div></div>
-      <div class="side-item reveal"><div><div class="side-name">🧅 Onion Rings</div><div class="side-sub">6 pezzi in pastella</div></div><div class="side-price">€4</div></div>
-      <div class="side-item reveal"><div><div class="side-name">🥗 Coleslaw</div><div class="side-sub">Artigianale, fresco</div></div><div class="side-price">€2</div></div>
-      <div class="side-item reveal"><div><div class="side-name">🍗 Nuggets ×6</div><div class="side-sub">Pollo croccante</div></div><div class="side-price">€5</div></div>
+      <div class="menu-card reveal" data-cat="starter">
+        <div class="card-img">
+          <img src="img/prodotti/antipasti/nachos-con-salsa-mex.jpg" alt="Nachos con salsa mex" loading="lazy">
+          <span class="card-badge">€5</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-name">Nachos con salsa mex</h3>
+          <p class="card-desc">Tortillas di mais messicana</p>
+          <div class="card-foot">
+            <span class="card-price">€5,00</span>
+            <button class="card-btn" onclick="orderItem('Nachos con salsa mex',5)">Aggiungi +</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- FRITTI -->
+      <div class="menu-card reveal" data-cat="fritto">
+        <div class="card-img">
+          <img src="img/prodotti/fritti/cheddar-bacon-chips.jpg">
+          <span class="card-badge">€7,50</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-name">Cheddar e bacon chips</h3>
+          <p class="card-desc">Le nostre strepitose chips con cheddar fuso e bacon crispy</p>
+          <div class="card-foot">
+            <span class="card-price">€7,50</span>
+            <button class="card-btn" onclick="orderItem('Cheddar e bacon chips',7.5)">Aggiungi +</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card reveal" data-cat="fritto">
+        <div class="card-img">
+          <img src="img/prodotti/fritti/chips-alla-gricia.jpg" alt="Chips alla gricia" loading="lazy">
+          <span class="card-badge">€8</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-name">Chips alla gricia</h3>
+          <p class="card-desc">Chips, guanciale, salsa cacio e pepe home made</p>
+          <div class="card-foot">
+            <span class="card-price">€8,00</span>
+            <button class="card-btn" onclick="orderItem('Chips alla gricia',8)">Aggiungi +</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card reveal" data-cat="fritto">
+        <div class="card-img">
+          <img src="img/prodotti/fritti/buns-chips.jpg" alt="Buns chips" loading="lazy">
+          <span class="card-badge">€5,50</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-name">Buns chips</h3>
+          <p class="card-desc">Le nostre strepitose e inimitabili patatine con buccia</p>
+          <div class="card-foot">
+            <span class="card-price">€5,50</span>
+            <button class="card-btn" onclick="orderItem('Buns chips',5.5)">Aggiungi +</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card reveal" data-cat="fritto">
+        <div class="card-img">
+          <img src="img/prodotti/fritti/fried-chicken.jpg" alt="Fried chicken" loading="lazy">
+          <span class="card-badge">€9</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-name">Fried chicken (8 pezzi)</h3>
+          <p class="card-desc">Pollo fritto</p>
+          <div class="card-foot">
+            <span class="card-price">€9,00</span>
+            <button class="card-btn" onclick="orderItem('Fried chicken',9)">Aggiungi +</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card reveal" data-cat="fritto">
+        <div class="card-img">
+          <img src="img/prodotti/fritti/jalapeno-red-hot.jpg" alt="Jalapeno red hot" loading="lazy">
+          <span class="card-badge">€9</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-name">Jalapeno red hot (5 pezzi)</h3>
+          <p class="card-desc">Peperoncino rosso panato ripieno di crema di formaggio</p>
+          <div class="card-foot">
+            <span class="card-price">€9,00</span>
+            <button class="card-btn" onclick="orderItem('Jalapeno red hot',9)">Aggiungi +</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card reveal" data-cat="fritto">
+        <div class="card-img">
+          <img src="img/prodotti/fritti/onion-rings.jpg" alt="Onion rings" loading="lazy">
+          <span class="card-badge">€8</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-name">Onion rings (10 pezzi)</h3>
+          <p class="card-desc">Anelli di cipolla</p>
+          <div class="card-foot">
+            <span class="card-price">€8,00</span>
+            <button class="card-btn" onclick="orderItem('Onion rings',8)">Aggiungi +</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card reveal" data-cat="fritto">
+        <div class="card-img">
+          <img src="img/prodotti/fritti/smoke-chips.jpg" alt="Smoke chips" loading="lazy">
+          <span class="card-badge">€7</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-name">Smoke chips</h3>
+          <p class="card-desc">Chips con Maionese affumicata al bacon</p>
+          <div class="card-foot">
+            <span class="card-price">€7,00</span>
+            <button class="card-btn" onclick="orderItem('Smoke chips',7)">Aggiungi +</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- BURGERS -->
+      <div class="menu-card reveal" data-cat="burger">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&q=80" alt="Crispy buns bacon" loading="lazy">
+          <span class="card-badge">€12,50</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-name">Crispy buns bacon</h3>
+          <p class="card-desc">Hamburger di scottona, triplo cheddar, triplo bacon, salsa buns</p>
+          <div class="card-foot">
+            <span class="card-price">€12,50</span>
+            <button class="card-btn" onclick="orderItem('Crispy buns bacon',12.5)">Aggiungi +</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card reveal" data-cat="burger">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=600&q=80" alt="Smoke burger" loading="lazy">
+          <span class="card-badge">€12,50</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-name">Smoke burger</h3>
+          <p class="card-desc">Burger di scottona, maionese affumicata al bacon, doppio cheddar, bacon crispy</p>
+          <div class="card-foot">
+            <span class="card-price">€12,50</span>
+            <button class="card-btn" onclick="orderItem('Smoke burger',12.5)">Aggiungi +</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card reveal" data-cat="burger">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=600&q=80" alt="North caroline" loading="lazy">
+          <span class="card-badge">€12,50</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-name">North caroline</h3>
+          <p class="card-desc">Pulled pork, coleslaw, doppio cheddar, doppio bacon, bbq, maionese</p>
+          <div class="card-foot">
+            <span class="card-price">€12,50</span>
+            <button class="card-btn" onclick="orderItem('North caroline',12.5)">Aggiungi +</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card reveal" data-cat="burger">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1565299507177-b0ac66763828?w=600&q=80" alt="Classic burger" loading="lazy">
+          <span class="card-badge">€11</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-name">Classic burger</h3>
+          <p class="card-desc">Hamburger di scottona, insalata, pomodoro, ketchup, maionese</p>
+          <div class="card-foot">
+            <span class="card-price">€11,00</span>
+            <button class="card-btn" onclick="orderItem('Classic burger',11)">Aggiungi +</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card reveal" data-cat="burger">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=600&q=80" alt="Dublin" loading="lazy">
+          <span class="card-badge">€15</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-name">Dublin</h3>
+          <p class="card-desc">Hamburger di Angus irlandese, doppio cheddar, doppio bacon, cipolla caramellata home made, senape, ketchup</p>
+          <div class="card-foot">
+            <span class="card-price">€15,00</span>
+            <button class="card-btn" onclick="orderItem('Dublin',15)">Aggiungi +</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card reveal" data-cat="burger">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=600&q=80" alt="Roma" loading="lazy">
+          <span class="card-badge">€12,50</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-name">Roma</h3>
+          <p class="card-desc">Hamburger di scottona, salsa cacio e pepe home made, insalata, guanciale, uovo alla piastra</p>
+          <div class="card-foot">
+            <span class="card-price">€12,50</span>
+            <button class="card-btn" onclick="orderItem('Roma',12.5)">Aggiungi +</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card reveal" data-cat="burger">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1548369937-47519962c11a?w=600&q=80" alt="Belfast" loading="lazy">
+          <span class="card-badge">€15</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-name">Belfast</h3>
+          <p class="card-desc">Hamburger di Angus irlandese, insalata, pomodoro, triplo bacon, triplo cheddar, bbq, maionese, cipolla crispy</p>
+          <div class="card-foot">
+            <span class="card-price">€15,00</span>
+            <button class="card-btn" onclick="orderItem('Belfast',15)">Aggiungi +</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card reveal" data-cat="burger">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1580013759032-c96505e24c1f?w=600&q=80" alt="Cancun" loading="lazy">
+          <span class="card-badge">€13</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-name">Cancun</h3>
+          <p class="card-desc">Hamburger di scottona, doppio cheddar, doppio bacon, salsa yogurt, jalapeño, insalata, nachos sbriciolato</p>
+          <div class="card-foot">
+            <span class="card-price">€13,00</span>
+            <button class="card-btn" onclick="orderItem('Cancun',13)">Aggiungi +</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card reveal" data-cat="burger">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1586816001966-79b736744398?w=600&q=80" alt="Fuorilegge Burger" loading="lazy">
+          <span class="card-badge">€20</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-name">Fuorilegge Burger</h3>
+          <p class="card-desc">Triplo hamburger smashato, triplo bacon, triplo cheddar, salsa buns</p>
+          <div class="card-foot">
+            <span class="card-price">€20,00</span>
+            <button class="card-btn" onclick="orderItem('Fuorilegge Burger',20)">Aggiungi +</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card reveal" data-cat="burger">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=600&q=80" alt="Cheese burger" loading="lazy">
+          <span class="card-badge">€12,50</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-name">Cheese burger</h3>
+          <p class="card-desc">Hamburger di scottona, doppio cheddar, cipolla bianca a dadini, cetrioli pickles, senape, ketchup</p>
+          <div class="card-foot">
+            <span class="card-price">€12,50</span>
+            <button class="card-btn" onclick="orderItem('Cheese burger',12.5)">Aggiungi +</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card reveal" data-cat="burger">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1520072959219-c595dc870360?w=600&q=80" alt="Veg burger" loading="lazy">
+          <span class="card-badge">€12</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-name">Veg burger</h3>
+          <p class="card-desc">Burger vegano a base di proteine vegetali, insalata, pomodoro, salsa Maionese vegana</p>
+          <div class="card-foot">
+            <span class="card-price">€12,00</span>
+            <button class="card-btn" onclick="orderItem('Veg burger',12)">Aggiungi +</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- PANINI -->
+      <div class="menu-card reveal" data-cat="panino">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1481070555726-e2fe8357725b?w=600&q=80" alt="Martina Franca" loading="lazy">
+          <span class="card-badge">€9,50</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-name">Martina Franca</h3>
+          <p class="card-desc">Capocollo di Martina Franca IGP, bufala, pomodori secchi, insalata</p>
+          <div class="card-foot">
+            <span class="card-price">€9,50</span>
+            <button class="card-btn" onclick="orderItem('Martina Franca',9.5)">Aggiungi +</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card reveal" data-cat="panino">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1519984388953-d2406bc725e1?w=600&q=80" alt="Tonnetto" loading="lazy">
+          <span class="card-badge">€12</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-name">Tonnetto</h3>
+          <p class="card-desc">Tartare di tonno fresco, insalata, pomodoro, bufala, Tabasco</p>
+          <div class="card-foot">
+            <span class="card-price">€12,00</span>
+            <button class="card-btn" onclick="orderItem('Tonnetto',12)">Aggiungi +</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card reveal" data-cat="panino">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1509722747041-616f39b57eef?w=600&q=80" alt="Bologna" loading="lazy">
+          <span class="card-badge">€9</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-name">Bologna</h3>
+          <p class="card-desc">Mortadella, bufala, pomodori secchi, granella di pistacchio</p>
+          <div class="card-foot">
+            <span class="card-price">€9,00</span>
+            <button class="card-btn" onclick="orderItem('Bologna',9)">Aggiungi +</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- POKÈ BOWL -->
+      <div class="menu-card reveal" data-cat="poke">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&q=80" alt="Corfù" loading="lazy">
+          <span class="card-badge">€11</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-name">Corfù</h3>
+          <p class="card-desc">Riso basmati, insalata, pomodoro, olive nere, avocado, feta, cipolla rossa, salsa yogurt</p>
+          <div class="card-foot">
+            <span class="card-price">€11,00</span>
+            <button class="card-btn" onclick="orderItem('Corfù',11)">Aggiungi +</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card reveal" data-cat="poke">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1551248429-40975aa4de74?w=600&q=80" alt="Tuna" loading="lazy">
+          <span class="card-badge">€14</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-name">Tuna</h3>
+          <p class="card-desc">Riso basmati, tartare di tonno fresco, insalata, pomodoro, bufala, mango, semi misti, soia</p>
+          <div class="card-foot">
+            <span class="card-price">€14,00</span>
+            <button class="card-btn" onclick="orderItem('Tuna',14)">Aggiungi +</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- BEVANDE -->
+      <div class="menu-card reveal" data-cat="bevanda">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1554866585-cd94860890b7?w=600&q=80" alt="Coca-Cola" loading="lazy">
+          <span class="card-badge">€3</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-name">Coca-Cola (33cl)</h3>
+          <p class="card-desc">Coca-Cola lattina</p>
+          <div class="card-foot">
+            <span class="card-price">€3,00</span>
+            <button class="card-btn" onclick="orderItem('Coca-Cola',3)">Aggiungi +</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card reveal" data-cat="bevanda">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?w=600&q=80" alt="Sprite" loading="lazy">
+          <span class="card-badge">€3</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-name">Sprite (33cl)</h3>
+          <p class="card-desc">Sprite lattina</p>
+          <div class="card-foot">
+            <span class="card-price">€3,00</span>
+            <button class="card-btn" onclick="orderItem('Sprite',3)">Aggiungi +</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card reveal" data-cat="bevanda">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1581098365941-8e44e42bc5f8?w=600&q=80" alt="Fanta" loading="lazy">
+          <span class="card-badge">€3</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-name">Fanta (33cl)</h3>
+          <p class="card-desc">Fanta lattina</p>
+          <div class="card-foot">
+            <span class="card-price">€3,00</span>
+            <button class="card-btn" onclick="orderItem('Fanta',3)">Aggiungi +</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card reveal" data-cat="bevanda">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=600&q=80" alt="Tè alla pesca" loading="lazy">
+          <span class="card-badge">€3</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-name">Tè alla pesca (33cl)</h3>
+          <p class="card-desc">Tè freddo alla pesca</p>
+          <div class="card-foot">
+            <span class="card-price">€3,00</span>
+            <button class="card-btn" onclick="orderItem('Tè alla pesca',3)">Aggiungi +</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card reveal" data-cat="bevanda">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=600&q=80" alt="Tè al limone" loading="lazy">
+          <span class="card-badge">€3</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-name">Tè al limone</h3>
+          <p class="card-desc">Tè freddo al limone</p>
+          <div class="card-foot">
+            <span class="card-price">€3,00</span>
+            <button class="card-btn" onclick="orderItem('Tè al limone',3)">Aggiungi +</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card reveal" data-cat="bevanda">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1566888596782-c7f41cc184c5?w=600&q=80" alt="Ginger Beer" loading="lazy">
+          <span class="card-badge">€4</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-name">Ginger Beer (33cl)</h3>
+          <p class="card-desc">Birra allo zenzero</p>
+          <div class="card-foot">
+            <span class="card-price">€4,00</span>
+            <button class="card-btn" onclick="orderItem('Ginger Beer',4)">Aggiungi +</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card reveal" data-cat="bevanda">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1548839140-29a749e1cf4d?w=600&q=80" alt="Acqua naturale" loading="lazy">
+          <span class="card-badge">€2</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-name">Acqua naturale (50cl)</h3>
+          <p class="card-desc">Acqua minerale naturale</p>
+          <div class="card-foot">
+            <span class="card-price">€2,00</span>
+            <button class="card-btn" onclick="orderItem('Acqua naturale',2)">Aggiungi +</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card reveal" data-cat="bevanda">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1548839140-29a749e1cf4d?w=600&q=80" alt="Acqua frizzante" loading="lazy">
+          <span class="card-badge">€2</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-name">Acqua frizzante (50cl)</h3>
+          <p class="card-desc">Acqua minerale frizzante</p>
+          <div class="card-foot">
+            <span class="card-price">€2,00</span>
+            <button class="card-btn" onclick="orderItem('Acqua frizzante',2)">Aggiungi +</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- BIRRE -->
+      <div class="menu-card reveal" data-cat="birra">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=600&q=80" alt="Menabrea rossa" loading="lazy">
+          <span class="card-badge">€4,50</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-name">Menabrea rossa (33cl)</h3>
+          <p class="card-desc">Doppio Malto 7,5% vol — Italia</p>
+          <div class="card-foot">
+            <span class="card-price">€4,50</span>
+            <button class="card-btn" onclick="orderItem('Menabrea rossa',4.5)">Aggiungi +</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card reveal" data-cat="birra">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1535958636474-b021ee887b13?w=600&q=80" alt="Bjorne Beer" loading="lazy">
+          <span class="card-badge">€5</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-name">Bjorne Beer (33cl)</h3>
+          <p class="card-desc">Lager Strong 8,3% vol — Danimarca</p>
+          <div class="card-foot">
+            <span class="card-price">€5,00</span>
+            <button class="card-btn" onclick="orderItem('Bjorne Beer',5)">Aggiungi +</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card reveal" data-cat="birra">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1567696153798-9111f9cd3d0d?w=600&q=80" alt="Erdinger" loading="lazy">
+          <span class="card-badge">€6</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-name">Erdinger (33cl)</h3>
+          <p class="card-desc">Weiss 5,3% vol — Germania</p>
+          <div class="card-foot">
+            <span class="card-price">€6,00</span>
+            <button class="card-btn" onclick="orderItem('Erdinger',6)">Aggiungi +</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card reveal" data-cat="birra">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=600&q=80" alt="Slalom" loading="lazy">
+          <span class="card-badge">€5</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-name">Slalom (33cl)</h3>
+          <p class="card-desc">Lager Strong 9% vol — Scozia</p>
+          <div class="card-foot">
+            <span class="card-price">€5,00</span>
+            <button class="card-btn" onclick="orderItem('Slalom',5)">Aggiungi +</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card reveal" data-cat="birra">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1535958636474-b021ee887b13?w=600&q=80" alt="Heineken" loading="lazy">
+          <span class="card-badge">€3,50</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-name">Heineken</h3>
+          <p class="card-desc">Birra Heineken</p>
+          <div class="card-foot">
+            <span class="card-price">€3,50</span>
+            <button class="card-btn" onclick="orderItem('Heineken',3.5)">Aggiungi +</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- VINI & BOLLICINE -->
+      <div class="menu-card reveal" data-cat="vino">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=600&q=80" alt="Tramari" loading="lazy">
+          <span class="card-badge">€22</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-name">Tramari (75cl)</h3>
+          <p class="card-desc">Primitivo 100% — 13% vol — Vino Rosato</p>
+          <div class="card-foot">
+            <span class="card-price">€22,00</span>
+            <button class="card-btn" onclick="orderItem('Tramari',22)">Aggiungi +</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card reveal" data-cat="bollicine">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Prosecco" loading="lazy">
+          <span class="card-badge">€20</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-name">Prosecco (75cl)</h3>
+          <p class="card-desc">Bollicine italiane</p>
+          <div class="card-foot">
+            <span class="card-price">€20,00</span>
+            <button class="card-btn" onclick="orderItem('Prosecco',20)">Aggiungi +</button>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -252,7 +780,7 @@
         <div class="b-step reveal">
           <div class="step-hd"><div class="step-num">1</div><div class="step-ttl">Scegli il Pane</div></div>
           <div class="opts" id="s-bun">
-            <div class="opt sel" data-v="Brioche" data-p="0" onclick="pick(this,'bun')"><span class="opt-emoji">🍞</span><div class="opt-name">Brioche</div><div class="opt-price">incluso</div></div>
+            <div class="opt sel" data-v="Brioche" data-p="0" onclick="pick(this,'bun')"><span class="opt-emoji">🍞</span><div class="opt-name">Bun</div><div class="opt-price">incluso</div></div>
             <div class="opt" data-v="Sesamo" data-p="0" onclick="pick(this,'bun')"><span class="opt-emoji">🥖</span><div class="opt-name">Sesamo</div><div class="opt-price">incluso</div></div>
             <div class="opt" data-v="Integrale" data-p="0" onclick="pick(this,'bun')"><span class="opt-emoji">🌾</span><div class="opt-name">Integrale</div><div class="opt-price">incluso</div></div>
             <div class="opt" data-v="Gluten Free" data-p="1" onclick="pick(this,'bun')"><span class="opt-emoji">🌿</span><div class="opt-name">Gluten Free</div><div class="opt-price">+€1,00</div></div>
@@ -393,7 +921,7 @@
 <!-- ========== FOOTER ========== -->
 <footer>
   <div class="container">
-    <img src="img/logo2.png" alt="Buns 50" class="ft-logo-img">
+    <img src="img/logo/logo2.png" alt="Buns 50" class="ft-logo-img">
     <p class="ft-tag">Hamburger artigianale — Terlizzi, Puglia</p>
     <ul class="ft-links">
       <li><a href="#menu">Menu</a></li>

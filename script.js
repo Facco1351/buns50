@@ -234,6 +234,9 @@ ${lines}
   renderCart();
 }
 
+// Apply initial tab filter
+document.querySelector('.menu-tab.active').click();
+
 // SCROLL REVEAL
 const io = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
