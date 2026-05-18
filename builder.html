@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crea il tuo Panino – Buns 50</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Lilita+One&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ========== NAV ========== -->
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo"><img src="img/logo/logo1.png" alt="Buns 50" class="nav-logo-img"></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="promo.html">Promo</a></li>
+        <li><a href="builder.html">Crea il tuo</a></li>
+        <li><a href="index.html#contacts">Contatti</a></li>
+        <li><a href="menu.html" class="nav-cta">Ordina ora</a></li>
+      </ul>
+      <div class="burger-icon" id="navToggle">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ========== PAGE HEADER ========== -->
+<section style="padding:140px 0 40px;text-align:center;background:var(--dark);">
+  <div class="container">
+    <p class="eyebrow">Personalizza</p>
+    <h1 class="sec-title" style="font-size:clamp(2.2rem,6vw,4rem);">CREA IL TUO <span>PANINO</span></h1>
+    <p style="color:var(--muted);max-width:480px;margin:12px auto 0;">Scegli ogni ingrediente e invia l'ordine direttamente su WhatsApp</p>
+  </div>
+</section>
+
+<!-- ========== BUILDER ========== -->
+<section id="builder" style="padding:60px 0 80px;">
+  <div class="container">
+    <div class="builder-wrap">
+      <div class="builder-steps">
+
+        <!-- Step 1 -->
+        <div class="b-step reveal">
+          <div class="step-hd"><div class="step-num">1</div><div class="step-ttl">Scegli il Pane</div></div>
+          <div class="opts" id="s-bun">
+            <div class="opt sel" data-v="Brioche" data-p="0" onclick="pick(this,'bun')"><span class="opt-emoji">🍞</span><div class="opt-name">Bun</div><div class="opt-price">incluso</div></div>
+            <div class="opt" data-v="Sesamo" data-p="0" onclick="pick(this,'bun')"><span class="opt-emoji">🥖</span><div class="opt-name">Sesamo</div><div class="opt-price">incluso</div></div>
+            <div class="opt" data-v="Integrale" data-p="0" onclick="pick(this,'bun')"><span class="opt-emoji">🌾</span><div class="opt-name">Integrale</div><div class="opt-price">incluso</div></div>
+            <div class="opt" data-v="Gluten Free" data-p="1" onclick="pick(this,'bun')"><span class="opt-emoji">🌿</span><div class="opt-name">Gluten Free</div><div class="opt-price">+€1,00</div></div>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="b-step reveal">
+          <div class="step-hd"><div class="step-num">2</div><div class="step-ttl">Scegli la Proteina</div></div>
+          <div class="opts" id="s-protein">
+            <div class="opt sel" data-v="Manzo 150g" data-p="0" onclick="pick(this,'protein')"><span class="opt-emoji">🥩</span><div class="opt-name">Manzo 150g</div><div class="opt-price">incluso</div></div>
+            <div class="opt" data-v="Manzo Doppio 300g" data-p="3" onclick="pick(this,'protein')"><span class="opt-emoji">🍖</span><div class="opt-name">Doppio 300g</div><div class="opt-price">+€3,00</div></div>
+            <div class="opt" data-v="Pollo Croccante" data-p="0" onclick="pick(this,'protein')"><span class="opt-emoji">🍗</span><div class="opt-name">Pollo Crispy</div><div class="opt-price">incluso</div></div>
+            <div class="opt" data-v="Vegetariano" data-p="0" onclick="pick(this,'protein')"><span class="opt-emoji">🥦</span><div class="opt-name">Vegetariano</div><div class="opt-price">incluso</div></div>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="b-step reveal">
+          <div class="step-hd"><div class="step-num">3</div><div class="step-ttl">Aggiungi il Formaggio</div></div>
+          <div class="opts" id="s-cheese">
+            <div class="opt sel" data-v="Cheddar" data-p="0" onclick="pick(this,'cheese')"><span class="opt-emoji">🧀</span><div class="opt-name">Cheddar</div><div class="opt-price">incluso</div></div>
+            <div class="opt" data-v="Emmental" data-p="0" onclick="pick(this,'cheese')"><span class="opt-emoji">🫕</span><div class="opt-name">Emmental</div><div class="opt-price">incluso</div></div>
+            <div class="opt" data-v="Provolone del Monaco" data-p="1" onclick="pick(this,'cheese')"><span class="opt-emoji">🧄</span><div class="opt-name">Provolone</div><div class="opt-price">+€1,00</div></div>
+            <div class="opt" data-v="Senza Formaggio" data-p="0" onclick="pick(this,'cheese')"><span class="opt-emoji">🚫</span><div class="opt-name">Senza</div><div class="opt-price">incluso</div></div>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="b-step reveal">
+          <div class="step-hd"><div class="step-num">4</div><div class="step-ttl">Topping <span class="step-sub">(max 4, seleziona più ingredienti)</span></div></div>
+          <div class="opts" id="s-toppings">
+            <div class="opt" data-v="Lattuga" data-p="0" onclick="tog(this)"><span class="opt-emoji">🥬</span><div class="opt-name">Lattuga</div><div class="opt-price">incluso</div></div>
+            <div class="opt" data-v="Pomodoro" data-p="0" onclick="tog(this)"><span class="opt-emoji">🍅</span><div class="opt-name">Pomodoro</div><div class="opt-price">incluso</div></div>
+            <div class="opt" data-v="Cetrioli" data-p="0" onclick="tog(this)"><span class="opt-emoji">🥒</span><div class="opt-name">Cetrioli</div><div class="opt-price">incluso</div></div>
+            <div class="opt" data-v="Cipolla Caramellata" data-p="0" onclick="tog(this)"><span class="opt-emoji">🧅</span><div class="opt-name">Cipolla Car.</div><div class="opt-price">incluso</div></div>
+            <div class="opt" data-v="Jalapeños" data-p="0.5" onclick="tog(this)"><span class="opt-emoji">🌶️</span><div class="opt-name">Jalapeños</div><div class="opt-price">+€0,50</div></div>
+            <div class="opt" data-v="Funghi" data-p="1" onclick="tog(this)"><span class="opt-emoji">🍄</span><div class="opt-name">Funghi</div><div class="opt-price">+€1,00</div></div>
+            <div class="opt" data-v="Bacon" data-p="1.5" onclick="tog(this)"><span class="opt-emoji">🥓</span><div class="opt-name">Bacon</div><div class="opt-price">+€1,50</div></div>
+            <div class="opt" data-v="Avocado" data-p="1.5" onclick="tog(this)"><span class="opt-emoji">🥑</span><div class="opt-name">Avocado</div><div class="opt-price">+€1,50</div></div>
+          </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="b-step reveal">
+          <div class="step-hd"><div class="step-num">5</div><div class="step-ttl">Scegli la Salsa</div></div>
+          <div class="opts" id="s-sauce">
+            <div class="opt sel" data-v="Salsa Segreta Buns 50" data-p="0" onclick="pick(this,'sauce')"><span class="opt-emoji">⭐</span><div class="opt-name">Segreta Buns 50</div><div class="opt-price">incluso</div></div>
+            <div class="opt" data-v="BBQ Artigianale" data-p="0" onclick="pick(this,'sauce')"><span class="opt-emoji">🔥</span><div class="opt-name">BBQ Artigianale</div><div class="opt-price">incluso</div></div>
+            <div class="opt" data-v="Salsa Habanero" data-p="0" onclick="pick(this,'sauce')"><span class="opt-emoji">🌶️</span><div class="opt-name">Habanero</div><div class="opt-price">incluso</div></div>
+            <div class="opt" data-v="Mayo al Tartufo" data-p="1" onclick="pick(this,'sauce')"><span class="opt-emoji">🫙</span><div class="opt-name">Mayo Tartufo</div><div class="opt-price">+€1,00</div></div>
+            <div class="opt" data-v="Ranch" data-p="0" onclick="pick(this,'sauce')"><span class="opt-emoji">🥛</span><div class="opt-name">Ranch</div><div class="opt-price">incluso</div></div>
+            <div class="opt" data-v="Ketchup" data-p="0" onclick="pick(this,'sauce')"><span class="opt-emoji">🍅</span><div class="opt-name">Ketchup</div><div class="opt-price">incluso</div></div>
+          </div>
+        </div>
+
+      </div><!-- /builder-steps -->
+
+      <!-- SUMMARY -->
+      <div class="summary">
+        <div class="sum-title">Il Tuo Panino 🍔</div>
+        <div class="burger-vis"><div class="burger-emoji">🍔</div></div>
+        <div class="sum-rows">
+          <div class="sum-row"><span class="sum-lbl">Pane</span><span class="sum-val" id="sv-bun">Brioche</span></div>
+          <div class="sum-row"><span class="sum-lbl">Proteina</span><span class="sum-val" id="sv-protein">Manzo 150g</span></div>
+          <div class="sum-row"><span class="sum-lbl">Formaggio</span><span class="sum-val" id="sv-cheese">Cheddar</span></div>
+          <div class="sum-row"><span class="sum-lbl">Topping</span><span class="sum-val" id="sv-toppings">Nessuno</span></div>
+          <div class="sum-row"><span class="sum-lbl">Salsa</span><span class="sum-val" id="sv-sauce">Salsa Segreta Buns 50</span></div>
+        </div>
+        <div class="sum-total">
+          <span class="sum-total-lbl">Totale</span>
+          <span class="sum-total-price" id="sv-total">€8,00</span>
+        </div>
+        <button class="btn btn-primary" id="btn-add-builder" onclick="addBuilderToCart()" style="width:100%;justify-content:center;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          Aggiungi al Carrello
+        </button>
+        <p class="sum-note">Poi invia tutto l'ordine in un click 🛒</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <div class="container">
+    <img src="img/logo/logo2.png" alt="Buns 50" class="ft-logo-img">
+    <p class="ft-tag">Hamburger artigianale — Terlizzi, Puglia</p>
+    <ul class="ft-links">
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="builder.html">Crea il tuo</a></li>
+      <li><a href="index.html#contacts">Contatti</a></li>
+      <li><a href="https://www.instagram.com/buns_terlizzi/" target="_blank" rel="noopener">Instagram</a></li>
+    </ul>
+    <p class="ft-copy">© 2024 Buns 50 · Tutti i diritti riservati</p>
+  </div>
+</footer>
+
+<!-- ========== CARRELLO ========== -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="cart-panel" id="cartPanel">
+  <div class="cart-hd">
+    <span class="cart-title">Il tuo Carrello</span>
+    <button class="cart-close" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <p class="cart-empty">Il carrello è vuoto<br>Aggiungi qualcosa dal menu 🍔</p>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-total-row">
+      <span class="cart-total-lbl">Totale</span>
+      <span class="cart-total-val" id="cart-total">€0,00</span>
+    </div>
+    <button class="btn btn-wa" style="width:100%;justify-content:center;" onclick="checkoutCart()">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      Invia Ordine su WhatsApp
+    </button>
+  </div>
+</div>
+
+<!-- CART FLOATING BUTTON -->
+<button class="cart-btn" id="cartBtn" onclick="openCart()">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+  Carrello
+  <span class="cart-badge hidden" id="cartBadge">0</span>
+</button>
+
+<!-- ========== MODAL ORDINE ========== -->
+<div class="modal-overlay" id="orderModal">
+  <div class="modal">
+    <div class="modal-title">Completa l'ordine</div>
+    <p class="modal-sub">Inserisci i tuoi dati per inviare l'ordine via WhatsApp</p>
+    <div class="field">
+      <label>Modalità</label>
+      <div class="mode-toggle">
+        <button type="button" class="mode-btn active" id="mode-takeaway" onclick="setMode('takeaway')">🏃 Take Away</button>
+        <button type="button" class="mode-btn" id="mode-delivery" onclick="setMode('delivery')">🛵 Delivery</button>
+      </div>
+    </div>
+    <div class="field" id="field-address" style="display:none">
+      <label for="f-addr">Indirizzo di consegna</label>
+      <input type="text" id="f-addr" placeholder="Es. Via Roma 12, Terlizzi" autocomplete="street-address">
+    </div>
+    <div class="field">
+      <label for="f-name">Nome e Cognome</label>
+      <input type="text" id="f-name" placeholder="Es. Mario Rossi" autocomplete="name">
+    </div>
+    <div class="field">
+      <label for="f-phone">Numero di Telefono</label>
+      <input type="tel" id="f-phone" placeholder="Es. 333 1234567" autocomplete="tel">
+    </div>
+    <div class="field">
+      <label for="f-time" id="lbl-time">Orario di Ritiro</label>
+      <input type="time" id="f-time" min="12:00" max="23:00">
+    </div>
+    <p class="delivery-fee" id="delivery-fee-note"><span>🛵 Spese di consegna</span><span>+€2,00</span></p>
+    <div class="modal-btns">
+      <button class="btn btn-outline" onclick="closeModal()">Annulla</button>
+      <button class="btn btn-wa" onclick="confirmOrder()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        Invia su WhatsApp
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+// NAV
+const nav = document.getElementById('navbar');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 50));
+
+let mobileOpen = false;
+document.getElementById('navToggle').addEventListener('click', () => {
+  const links = document.getElementById('navLinks');
+  mobileOpen = !mobileOpen;
+  if (mobileOpen) {
+    Object.assign(links.style, {display:'flex',flexDirection:'column',position:'absolute',
+      top:'100%',left:'0',right:'0',background:'rgba(8,8,8,.98)',
+      padding:'24px',gap:'16px',borderTop:'1px solid var(--border)'});
+  } else {
+    links.style.display = '';
+  }
+});
+
+document.querySelectorAll('#navLinks a').forEach(a =>
+  a.addEventListener('click', () => { mobileOpen = false; document.getElementById('navLinks').style.display = ''; })
+);
+
+// BUILDER STATE
+const BASE = 8;
+const state = {
+  bun:     { v:'Brioche', p:0 },
+  protein: { v:'Manzo 150g', p:0 },
+  cheese:  { v:'Cheddar', p:0 },
+  sauce:   { v:'Salsa Segreta Buns 50', p:0 },
+  toppings: []
+};
+
+function pick(el, cat) {
+  el.parentElement.querySelectorAll('.opt').forEach(o => o.classList.remove('sel'));
+  el.classList.add('sel');
+  state[cat] = { v: el.dataset.v, p: parseFloat(el.dataset.p) || 0 };
+  refresh();
+}
+
+function tog(el) {
+  const v = el.dataset.v, p = parseFloat(el.dataset.p) || 0;
+  if (el.classList.contains('sel')) {
+    el.classList.remove('sel');
+    state.toppings = state.toppings.filter(t => t.v !== v);
+  } else {
+    if (state.toppings.length >= 4) {
+      el.style.animation = 'shake .35s';
+      setTimeout(() => el.style.animation = '', 400);
+      return;
+    }
+    el.classList.add('sel');
+    state.toppings.push({ v, p });
+  }
+  refresh();
+}
+
+function refresh() {
+  document.getElementById('sv-bun').textContent     = state.bun.v;
+  document.getElementById('sv-protein').textContent = state.protein.v;
+  document.getElementById('sv-cheese').textContent  = state.cheese.v;
+  document.getElementById('sv-sauce').textContent   = state.sauce.v;
+  const tops = state.toppings.map(t => t.v);
+  document.getElementById('sv-toppings').textContent = tops.length ? tops.join(', ') : 'Nessuno';
+  const extra = state.bun.p + state.protein.p + state.cheese.p +
+    state.toppings.reduce((s,t) => s+t.p, 0) + state.sauce.p;
+  document.getElementById('sv-total').textContent = '€' + (BASE + extra).toFixed(2).replace('.',',');
+}
+
+const WA_NUMBER = '3917693475';
+
+// CART
+const cart = [];
+
+function openCart() {
+  document.getElementById('cartPanel').classList.add('open');
+  document.getElementById('cartOverlay').classList.add('open');
+}
+
+function closeCart() {
+  document.getElementById('cartPanel').classList.remove('open');
+  document.getElementById('cartOverlay').classList.remove('open');
+}
+
+function addToCart(name, price, details) {
+  if (!details) {
+    const idx = cart.findIndex(i => i.name === name && !i.details);
+    if (idx >= 0) { cart[idx].qty++; renderCart(); openCart(); return; }
+  }
+  cart.push({ name, price, qty: 1, details: details || null });
+  renderCart();
+  openCart();
+}
+
+function addBuilderToCart() {
+  const { bun, protein, cheese, sauce, toppings } = state;
+  const extra = bun.p + protein.p + cheese.p + toppings.reduce((s,t)=>s+t.p,0) + sauce.p;
+  const price = BASE + extra;
+  const details = {
+    bun: bun.v, protein: protein.v, cheese: cheese.v,
+    toppings: toppings.length ? toppings.map(t=>t.v).join(', ') : 'Nessuno',
+    sauce: sauce.v
+  };
+  addToCart('Panino Personalizzato', price, details);
+  const btn = document.getElementById('btn-add-builder');
+  const orig = btn.innerHTML;
+  btn.textContent = '✓ Aggiunto al carrello!';
+  setTimeout(() => btn.innerHTML = orig, 1600);
+}
+
+function updateQty(idx, delta) {
+  cart[idx].qty += delta;
+  if (cart[idx].qty <= 0) cart.splice(idx, 1);
+  renderCart();
+}
+
+function removeFromCart(idx) {
+  cart.splice(idx, 1);
+  renderCart();
+}
+
+function renderCart() {
+  const container = document.getElementById('cartItems');
+  const badge     = document.getElementById('cartBadge');
+  const totalEl   = document.getElementById('cart-total');
+  const totalQty  = cart.reduce((s,i) => s + i.qty, 0);
+  const totalPrice= cart.reduce((s,i) => s + i.price * i.qty, 0);
+
+  badge.textContent = totalQty;
+  badge.classList.toggle('hidden', totalQty === 0);
+  totalEl.textContent = '€' + totalPrice.toFixed(2).replace('.',',');
+
+  if (!cart.length) {
+    container.innerHTML = '<p class="cart-empty">Il carrello è vuoto<br>Aggiungi qualcosa dal menu 🍔</p>';
+    return;
+  }
+  container.innerHTML = cart.map((item, idx) => `
+    <div class="cart-item">
+      <div class="cart-item-hd">
+        <span class="cart-item-name">${item.name}</span>
+        <span class="cart-item-price">€${(item.price * item.qty).toFixed(2).replace('.',',')}</span>
+      </div>
+      ${item.details ? `<div class="cart-item-details">
+        🥖 ${item.details.bun} &nbsp;·&nbsp; 🥩 ${item.details.protein} &nbsp;·&nbsp; 🧀 ${item.details.cheese}<br>
+        🥬 ${item.details.toppings} &nbsp;·&nbsp; 🫙 ${item.details.sauce}
+      </div>` : `<div class="cart-item-details">€${item.price.toFixed(2).replace('.',',')} cad.</div>`}
+      <div class="cart-item-ft">
+        <div class="qty-ctrl">
+          <button class="qty-btn" onclick="updateQty(${idx},-1)">−</button>
+          <span class="qty-val">${item.qty}</span>
+          <button class="qty-btn" onclick="updateQty(${idx},1)">+</button>
+        </div>
+        <button class="cart-remove" onclick="removeFromCart(${idx})">Rimuovi</button>
+      </div>
+    </div>`).join('');
+}
+
+function checkoutCart() {
+  if (!cart.length) return;
+  openModal();
+}
+
+// MODAL
+let orderMode = 'takeaway';
+
+function setMode(mode) {
+  orderMode = mode;
+  document.getElementById('mode-takeaway').classList.toggle('active', mode === 'takeaway');
+  document.getElementById('mode-delivery').classList.toggle('active', mode === 'delivery');
+  document.getElementById('field-address').style.display = mode === 'delivery' ? '' : 'none';
+  document.getElementById('delivery-fee-note').style.display = mode === 'delivery' ? 'flex' : 'none';
+  document.getElementById('lbl-time').textContent = mode === 'delivery' ? 'Orario di Consegna' : 'Orario di Ritiro';
+}
+
+function openModal() {
+  document.getElementById('orderModal').classList.add('open');
+}
+
+function closeModal() {
+  document.getElementById('orderModal').classList.remove('open');
+  ['f-name','f-phone','f-time','f-addr'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.classList.remove('err');
+  });
+}
+
+document.getElementById('orderModal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+
+function confirmOrder() {
+  const name  = document.getElementById('f-name').value.trim();
+  const phone = document.getElementById('f-phone').value.trim();
+  const time  = document.getElementById('f-time').value;
+  const addr  = orderMode === 'delivery' ? document.getElementById('f-addr').value.trim() : null;
+
+  document.getElementById('f-name').classList.toggle('err', !name);
+  document.getElementById('f-phone').classList.toggle('err', !phone);
+  document.getElementById('f-time').classList.toggle('err', !time);
+  if (orderMode === 'delivery') document.getElementById('f-addr').classList.toggle('err', !addr);
+
+  if (!name || !phone || !time || (orderMode === 'delivery' && !addr)) return;
+  closeModal();
+
+  const lines = cart.map(item => {
+    let line = `• ${item.qty}x ${item.name} — €${(item.price * item.qty).toFixed(2).replace('.',',')}`;
+    if (item.details) {
+      line += `\n   ${item.details.bun} |  ${item.details.protein} |  ${item.details.cheese}`;
+      line += `\n   ${item.details.toppings} |  ${item.details.sauce}`;
+    }
+    return line;
+  }).join('\n\n');
+
+  const subtotal = cart.reduce((s,i) => s + i.price * i.qty, 0);
+  const deliveryFee = orderMode === 'delivery' ? 2 : 0;
+  const total = subtotal + deliveryFee;
+  const modalita = orderMode === 'delivery' ? `Delivery — ${addr}` : 'Take Away';
+
+  const msg =
+`*Ordine Buns 50*
+
+Nome: ${name}
+Telefono: ${phone}
+Modalità: ${modalita}
+Orario: ${time}
+
+${lines}${deliveryFee ? '\n\n• Spese di consegna — €2,00' : ''}
+
+*Totale: €${total.toFixed(2).replace('.',',')}*
+
+Grazie!`;
+
+  window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+  cart.length = 0;
+  renderCart();
+}
+
+// SCROLL REVEAL
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menu — Buns 50</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Lilita+One&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+/* ── MENU PAGE ── */
+.mp-hero{padding:148px 0 56px;text-align:center;border-bottom:1px solid var(--border);background:var(--dark);position:relative;overflow:hidden}
+.mp-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(204,0,0,.18) 0%,transparent 70%);pointer-events:none}
+.mp-hero .sec-title{margin-bottom:16px}
+.mp-hero-sub{font-size:.9rem;color:var(--muted);margin-bottom:28px}
+.mp-hero-back{font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.15em;color:var(--muted);text-decoration:none;transition:color .2s;display:inline-flex;align-items:center;gap:6px}
+.mp-hero-back:hover{color:var(--gold)}
+
+/* ── STICKY CATEGORY NAV ── */
+.mp-subnav{position:sticky;top:89px;z-index:500;background:rgba(8,8,8,.97);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:10px 0}
+.mp-tabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.mp-tabs::-webkit-scrollbar{display:none}
+.mp-tab{flex-shrink:0;padding:7px 15px;border-radius:4px;font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;cursor:pointer;border:1px solid var(--border);background:transparent;color:var(--muted);transition:all .2s;font-family:'Inter',sans-serif;text-decoration:none;white-space:nowrap}
+.mp-tab:hover{color:#fff;border-color:rgba(204,0,0,.5)}
+.mp-tab.active{background:var(--gold);color:#fff;border-color:var(--gold)}
+
+/* ── CATEGORY SECTIONS ── */
+.cat-section{padding:80px 0;border-bottom:1px solid var(--border)}
+.cat-section:last-child{border-bottom:none;padding-bottom:120px}
+.cat-hd{margin-bottom:44px}
+.cat-title{font-family:'Lilita One',cursive;font-size:clamp(2rem,4vw,3.2rem);font-weight:400;text-transform:uppercase;letter-spacing:.04em;line-height:1;margin-bottom:6px}
+.cat-title span{color:var(--gold)}
+.cat-note{font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.12em}
+
+/* ── ITEM GRID ── */
+.items-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0}
+.menu-item{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:20px 24px;border:1px solid transparent;border-bottom-color:var(--border);border-right-color:var(--border);transition:background .2s}
+.menu-item:hover{background:var(--card)}
+.items-grid .menu-item:nth-child(2n){border-right-color:transparent}
+.mi-info{flex:1;min-width:0}
+.mi-name{font-family:'Lilita One',cursive;font-size:1rem;font-weight:400;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px;display:block;color:var(--text)}
+.mi-sub{font-size:.75rem;color:var(--muted);font-family:'Inter';font-weight:400;text-transform:none;letter-spacing:0;margin-left:2px}
+.mi-desc{font-size:.78rem;color:var(--muted);line-height:1.55}
+.mi-right{display:flex;flex-direction:column;align-items:flex-end;gap:8px;flex-shrink:0}
+.mi-price{font-family:'Lilita One',cursive;font-size:1.3rem;font-weight:400;color:var(--gold);white-space:nowrap}
+.mi-add{background:transparent;border:1px solid var(--gold);color:var(--gold);width:30px;height:30px;border-radius:4px;cursor:pointer;font-size:1.25rem;line-height:1;font-family:'Oswald',sans-serif;font-weight:700;transition:all .2s;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.mi-add:hover{background:var(--gold);color:#fff;transform:scale(1.1)}
+.mi-add:active{transform:scale(.95)}
+/* flash verde conferma */
+.mi-add.added{background:#25D366;border-color:#25D366;color:#fff}
+
+/* Variante colonna singola */
+.items-grid.cols-1{grid-template-columns:1fr;max-width:700px}
+.items-grid.cols-1 .menu-item{border-right-color:transparent}
+
+/* Placeholder categoria vuota */
+.cat-placeholder{padding:32px 24px;border:1px dashed var(--border);border-radius:8px;text-align:center;color:var(--muted);font-size:.82rem;font-style:italic}
+
+@media(max-width:768px){
+  .items-grid{grid-template-columns:1fr}
+  .items-grid .menu-item:nth-child(2n){border-right-color:transparent}
+  .cat-section{padding:56px 0}
+  .mp-hero{padding:110px 0 40px}
+}
+@media(max-width:480px){
+  .cat-section{padding:44px 0}
+  .menu-item{padding:16px}
+  .mi-price{font-size:1.1rem}
+}
+</style>
+</head>
+<body>
+
+<!-- ====== NAV ====== -->
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo"><img src="img/logo/logo1.png" alt="Buns 50" class="nav-logo-img"></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="promo.html">Promo</a></li>
+        <li><a href="builder.html">Crea il tuo</a></li>
+        <li><a href="index.html#contacts">Contatti</a></li>
+        <li><a href="menu.html" class="nav-cta">Ordina ora</a></li>
+      </ul>
+      <div class="burger-icon" id="navToggle">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ====== HERO ====== -->
+<div class="mp-hero">
+  <div class="container">
+    <p class="eyebrow">Buns 50 · Terlizzi</p>
+    <h1 class="sec-title">IL NOSTRO <span>MENU</span></h1>
+    <p class="mp-hero-sub">Ingredienti freschi, ricette originali</p>
+  </div>
+</div>
+
+<!-- ====== STICKY TABS ====== -->
+<div class="mp-subnav">
+  <div class="container">
+    <div class="mp-tabs">
+      <a href="#antipasti"   class="mp-tab">Antipasti</a>
+      <a href="#fritti"      class="mp-tab">Fritti</a>
+      <a href="#signature"   class="mp-tab">Signature</a>
+      <a href="#burgers"     class="mp-tab">Burgers</a>
+      <a href="#panini"      class="mp-tab">Panini</a>
+      <a href="#hotdogs"     class="mp-tab">Hot Dogs</a>
+      <a href="#poke"        class="mp-tab">Poke Bowl</a>
+      <a href="#extra"       class="mp-tab">Extra</a>
+      <a href="#salse"       class="mp-tab">Salse</a>
+      <a href="#dolci"       class="mp-tab">Dolci</a>
+      <a href="#bevande"     class="mp-tab">Bevande</a>
+      <a href="#drinklist"   class="mp-tab">Drink List</a>
+      <a href="#birre"       class="mp-tab">Birre</a>
+      <a href="#vini"        class="mp-tab">Vini</a>
+      <a href="#amari"       class="mp-tab">Amari</a>
+    </div>
+  </div>
+</div>
+
+
+<!-- ====== ANTIPASTI ====== -->
+<section class="cat-section" id="antipasti">
+  <div class="container">
+    <div class="cat-hd"><h2 class="cat-title">ANTI<span>PASTI</span></h2><p class="cat-note">Starters</p></div>
+    <div class="items-grid">
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Olive</span></div>
+        <div class="mi-right"><span class="mi-price">€2,00</span><button class="mi-add" onclick="addItem(this,'Olive',2.0)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Nachos con Salsa Mex</span></div>
+        <div class="mi-right"><span class="mi-price">€4,00</span><button class="mi-add" onclick="addItem(this,'Nachos con Salsa Mex',4.0)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Mortadella alla Brace</span></div>
+        <div class="mi-right"><span class="mi-price">€7,50</span><button class="mi-add" onclick="addItem(this,'Mortadella alla Brace',7.5)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Gamberoni al Panko con Salsa Sweet Chili</span><span class="mi-desc">5 pezzi - Homemade</span></div>
+        <div class="mi-right"><span class="mi-price">€10,00</span><button class="mi-add" onclick="addItem(this,'Gamberoni al Panko con Salsa Sweet Chili',10.0)">+</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== FRITTI ====== -->
+<section class="cat-section" id="fritti">
+  <div class="container">
+    <div class="cat-hd"><h2 class="cat-title">FRI<span>TTI</span></h2></div>
+    <div class="items-grid">
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Buns Chips</span></div>
+        <div class="mi-right"><span class="mi-price">€4,00</span><button class="mi-add" onclick="addItem(this,'Buns Chips',4.0)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Sweet Potatoes Fries</span></div>
+        <div class="mi-right"><span class="mi-price">€6,00</span><button class="mi-add" onclick="addItem(this,'Sweet Potatoes Fries',6.0)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Onion Rings</span><span class="mi-desc">10 pezzi</span></div>
+        <div class="mi-right"><span class="mi-price">€6,00</span><button class="mi-add" onclick="addItem(this,'Onion Rings',6.0)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Cheddar e Bacon Chips</span></div>
+        <div class="mi-right"><span class="mi-price">€6,50</span><button class="mi-add" onclick="addItem(this,'Cheddar e Bacon Chips',6.5)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Chips alla Gricia</span><span class="mi-desc">Guanciale e Salsa Cacio e Pepe Homemade</span></div>
+        <div class="mi-right"><span class="mi-price">€7,00</span><button class="mi-add" onclick="addItem(this,'Chips alla Gricia',7.0)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Jalapeno Red Hot</span><span class="mi-desc">5 pezzi - Peperoncino rosso panato ripieno di crema di formaggio</span></div>
+        <div class="mi-right"><span class="mi-price">€7,50</span><button class="mi-add" onclick="addItem(this,'Jalapeno Red Hot',7.5)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Fried Chicken</span><span class="mi-desc">8 pezzi</span></div>
+        <div class="mi-right"><span class="mi-price">€8,00</span><button class="mi-add" onclick="addItem(this,'Fried Chicken',8.0)">+</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== SIGNATURE ====== -->
+<section class="cat-section" id="signature">
+  <div class="container">
+    <div class="cat-hd"><h2 class="cat-title">BUNS <span>BURGER</span></h2><p class="cat-note">Il nostro panino Signature</p></div>
+    <div class="items-grid cols-1">
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Buns Burger</span><span class="mi-desc">Doppio Burger di Scottona, Formaggio Fuso, Capocollo di Martina Franca IGP, Salsa Miele Mostarda, Insalata, Pomodori Secchi, Granella di Pistacchio</span></div>
+        <div class="mi-right"><span class="mi-price">€13,50</span><button class="mi-add" onclick="addItem(this,'Buns Burger',13.5)">+</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== BURGERS ====== -->
+<section class="cat-section" id="burgers">
+  <div class="container">
+    <div class="cat-hd"><h2 class="cat-title">BUR<span>GERS</span></h2><p class="cat-note">Anche in versione smash</p></div>
+    <div class="items-grid">
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Classic Burger</span><span class="mi-desc">Hamburger di Scottona, Insalata, Pomodoro, Ketchup, Maionese</span></div>
+        <div class="mi-right"><span class="mi-price">€8,00</span><button class="mi-add" onclick="addItem(this,'Classic Burger',8.0)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Smoke Burger</span><span class="mi-desc">Hamburger di Scottona, Maionese Affumicata al Bacon, Doppio Cheddar, Bacon Crispy</span></div>
+        <div class="mi-right"><span class="mi-price">€9,50</span><button class="mi-add" onclick="addItem(this,'Smoke Burger',9.5)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">North Caroline</span><span class="mi-desc">Pulled Pork, Coleslaw, Doppio Cheddar, Doppio Bacon, Salsa BBQ, Maionese</span></div>
+        <div class="mi-right"><span class="mi-price">€10,00</span><button class="mi-add" onclick="addItem(this,'North Caroline',10.0)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Chicken Burger</span><span class="mi-desc">Pollo Fritto Panato al Panko Homemade, Insalata, Pomodoro, Doppio Cheddar, Doppio Bacon, Salsa Buns</span></div>
+        <div class="mi-right"><span class="mi-price">€10,00</span><button class="mi-add" onclick="addItem(this,'Chicken Burger',10.0)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Crispy Buns Bacon</span><span class="mi-desc">Hamburger di Scottona, Triplo Cheddar, Triplo Bacon, Salsa Buns</span></div>
+        <div class="mi-right"><span class="mi-price">€10,00</span><button class="mi-add" onclick="addItem(this,'Crispy Buns Bacon',10.0)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Cheese Burger</span><span class="mi-desc">Hamburger di Scottona, Doppio Cheddar, Cipolla Bianca a Dadini, Cetrioli Pickles, Senape, Ketchup</span></div>
+        <div class="mi-right"><span class="mi-price">€10,00</span><button class="mi-add" onclick="addItem(this,'Cheese Burger',10.0)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Veg Burger</span><span class="mi-desc">Hamburger di Lenticchie e Spinacino Homemade, Insalata, Pomodoro, Salsa Buns o Mayo Vegana</span></div>
+        <div class="mi-right"><span class="mi-price">€10,00</span><button class="mi-add" onclick="addItem(this,'Veg Burger',10.0)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Cancun</span><span class="mi-desc">Hamburger di Scottona, Doppio Cheddar, Doppio Bacon, Salsa Yogurt, Jalapeno, Insalata, Nachos Sbriciolato</span></div>
+        <div class="mi-right"><span class="mi-price">€11,00</span><button class="mi-add" onclick="addItem(this,'Cancun',11.0)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Roma</span><span class="mi-desc">Hamburger di Scottona, Salsa Cacio e Pepe Homemade, Insalata, Guanciale, Uovo alla Piastra</span></div>
+        <div class="mi-right"><span class="mi-price">€11,00</span><button class="mi-add" onclick="addItem(this,'Roma',11.0)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Dublin</span><span class="mi-desc">Hamburger di Angus Irlandese, Doppio Cheddar, Doppio Bacon, Cipolla Caramellata Homemade, Senape, Ketchup</span></div>
+        <div class="mi-right"><span class="mi-price">€13,50</span><button class="mi-add" onclick="addItem(this,'Dublin',13.5)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Belfast</span><span class="mi-desc">Hamburger di Angus Irlandese, Insalata, Pomodoro, Triplo Bacon, Triplo Cheddar, Salsa BBQ, Maionese, Cipolla Crispy</span></div>
+        <div class="mi-right"><span class="mi-price">€13,50</span><button class="mi-add" onclick="addItem(this,'Belfast',13.5)">+</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== PANINI ====== -->
+<section class="cat-section" id="panini">
+  <div class="container">
+    <div class="cat-hd"><h2 class="cat-title">PAN<span>INI</span></h2></div>
+    <div class="items-grid">
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Bologna</span><span class="mi-desc">Mortadella di Bologna, Stracciatella, Pomodori Secchi, Granella di Pistacchio</span></div>
+        <div class="mi-right"><span class="mi-price">€7,50</span><button class="mi-add" onclick="addItem(this,'Bologna',7.5)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Martina Franca</span><span class="mi-desc">Capocollo di Martina Franca IGP, Bufala, Pomodori Secchi, Insalata</span></div>
+        <div class="mi-right"><span class="mi-price">€8,00</span><button class="mi-add" onclick="addItem(this,'Martina Franca',8.0)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Tonnetto</span><span class="mi-desc">Tartare di Tonno Fresco, Insalata, Pomodoro, Stracciatella, Tabasco</span></div>
+        <div class="mi-right"><span class="mi-price">€10,00</span><button class="mi-add" onclick="addItem(this,'Tonnetto',10.0)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Norway</span><span class="mi-desc">Tartare di Salmone Fresco, Bufala, Insalata, Pomodoro, Granella di Pistacchio, Maionese alla Soia</span></div>
+        <div class="mi-right"><span class="mi-price">€10,00</span><button class="mi-add" onclick="addItem(this,'Norway',10.0)">+</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== HOT DOGS ====== -->
+<section class="cat-section" id="hotdogs">
+  <div class="container">
+    <div class="cat-hd"><h2 class="cat-title">HOT <span>DOGS</span></h2></div>
+    <div class="items-grid">
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Classic Hot Dog</span><span class="mi-desc">Wurstel, Ketchup, Maionese</span></div>
+        <div class="mi-right"><span class="mi-price">€6,00</span><button class="mi-add" onclick="addItem(this,'Classic Hot Dog',6.0)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Berlino</span><span class="mi-desc">Wurstel, Crauti, Senape, Ketchup</span></div>
+        <div class="mi-right"><span class="mi-price">€7,00</span><button class="mi-add" onclick="addItem(this,'Berlino',7.0)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Vienna</span><span class="mi-desc">Wurstel, Crauti, Cipolla Crispy, Senape, Ketchup</span></div>
+        <div class="mi-right"><span class="mi-price">€8,00</span><button class="mi-add" onclick="addItem(this,'Vienna',8.0)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Tulum</span><span class="mi-desc">Wurstel, Cheddar Fuso, Bacon Crispy, Jalapeno Verdi a Rondelle, Salsa BBQ, Maionese</span></div>
+        <div class="mi-right"><span class="mi-price">€8,50</span><button class="mi-add" onclick="addItem(this,'Tulum',8.5)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Los Angeles</span><span class="mi-desc">Wurstel, Cheddar Fuso, Bacon Crispy, Cipolla Caramellata Homemade, Senape, Ketchup</span></div>
+        <div class="mi-right"><span class="mi-price">€9,00</span><button class="mi-add" onclick="addItem(this,'Los Angeles',9.0)">+</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== POKE BOWL ====== -->
+<section class="cat-section" id="poke">
+  <div class="container">
+    <div class="cat-hd"><h2 class="cat-title">POKE <span>BOWL</span></h2></div>
+    <div class="items-grid">
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Corfu</span><span class="mi-desc">Riso Basmati, Insalata, Pomodoro, Olive Nere, Cetriolo, Feta, Cipolla Rossa, Salsa Yogurt</span></div>
+        <div class="mi-right"><span class="mi-price">€9,00</span><button class="mi-add" onclick="addItem(this,'Corfu',9.0)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Thai</span><span class="mi-desc">Riso Basmati, Insalata, Pomodoro, Carote, Olive Nere, Pollo alla Griglia, Salsa Curry</span></div>
+        <div class="mi-right"><span class="mi-price">€10,00</span><button class="mi-add" onclick="addItem(this,'Thai',10.0)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Oslo</span><span class="mi-desc">Riso Basmati, Tartare di Salmone Fresco, Insalata, Semi Misti, Pomodoro, Avocado, Granella di Pistacchio, Salsa Yogurt, Stracciatella</span></div>
+        <div class="mi-right"><span class="mi-price">€11,00</span><button class="mi-add" onclick="addItem(this,'Oslo',11.0)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Tuna</span><span class="mi-desc">Riso Basmati, Tartare di Tonno Fresco, Insalata, Pomodoro, Bufala, Mango, Semi Misti, Soia</span></div>
+        <div class="mi-right"><span class="mi-price">€12,00</span><button class="mi-add" onclick="addItem(this,'Tuna',12.0)">+</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== EXTRA ====== -->
+<section class="cat-section" id="extra">
+  <div class="container">
+    <div class="cat-hd"><h2 class="cat-title">EX<span>TRA</span></h2><p class="cat-note">Aggiunte al panino</p></div>
+    <div class="items-grid">
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Burger di Scottona</span></div>
+        <div class="mi-right"><span class="mi-price">€3,00</span><button class="mi-add" onclick="addItem(this,'Burger di Scottona',3.0)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Pulled Pork</span></div>
+        <div class="mi-right"><span class="mi-price">€3,00</span><button class="mi-add" onclick="addItem(this,'Pulled Pork',3.0)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Bun Gluten-Free</span></div>
+        <div class="mi-right"><span class="mi-price">€2,00</span><button class="mi-add" onclick="addItem(this,'Bun Gluten-Free',2.0)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Bacon</span></div>
+        <div class="mi-right"><span class="mi-price">€1,50</span><button class="mi-add" onclick="addItem(this,'Bacon',1.5)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Cheddar</span></div>
+        <div class="mi-right"><span class="mi-price">€1,00</span><button class="mi-add" onclick="addItem(this,'Cheddar',1.0)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Mozzarella Senza Lattosio</span></div>
+        <div class="mi-right"><span class="mi-price">€1,00</span><button class="mi-add" onclick="addItem(this,'Mozzarella Senza Lattosio',1.0)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Burger di Angus</span></div>
+        <div class="mi-right"><span class="mi-price">€4,00</span><button class="mi-add" onclick="addItem(this,'Burger di Angus',4.0)">+</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== SALSE ====== -->
+<section class="cat-section" id="salse">
+  <div class="container">
+    <div class="cat-hd"><h2 class="cat-title">SAL<span>SE</span></h2><p class="cat-note">Tutte a 0,50</p></div>
+    <div class="items-grid">
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Buns</span></div>
+        <div class="mi-right"><span class="mi-price">€0,50</span><button class="mi-add" onclick="addItem(this,'Buns',0.5)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">BBQ</span></div>
+        <div class="mi-right"><span class="mi-price">€0,50</span><button class="mi-add" onclick="addItem(this,'BBQ',0.5)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Miele e Mostarda</span></div>
+        <div class="mi-right"><span class="mi-price">€0,50</span><button class="mi-add" onclick="addItem(this,'Miele e Mostarda',0.5)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Yogurt</span></div>
+        <div class="mi-right"><span class="mi-price">€0,50</span><button class="mi-add" onclick="addItem(this,'Yogurt',0.5)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Curry</span></div>
+        <div class="mi-right"><span class="mi-price">€0,50</span><button class="mi-add" onclick="addItem(this,'Curry',0.5)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Cacio e Pepe</span></div>
+        <div class="mi-right"><span class="mi-price">€0,50</span><button class="mi-add" onclick="addItem(this,'Cacio e Pepe',0.5)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Sweet Chili</span></div>
+        <div class="mi-right"><span class="mi-price">€0,50</span><button class="mi-add" onclick="addItem(this,'Sweet Chili',0.5)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Cheddar</span></div>
+        <div class="mi-right"><span class="mi-price">€0,50</span><button class="mi-add" onclick="addItem(this,'Cheddar',0.5)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Maionese</span></div>
+        <div class="mi-right"><span class="mi-price">€0,50</span><button class="mi-add" onclick="addItem(this,'Maionese',0.5)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Ketchup</span></div>
+        <div class="mi-right"><span class="mi-price">€0,50</span><button class="mi-add" onclick="addItem(this,'Ketchup',0.5)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Salsa Mex</span></div>
+        <div class="mi-right"><span class="mi-price">€0,50</span><button class="mi-add" onclick="addItem(this,'Salsa Mex',0.5)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Salsa Smoke</span></div>
+        <div class="mi-right"><span class="mi-price">€0,50</span><button class="mi-add" onclick="addItem(this,'Salsa Smoke',0.5)">+</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== DOLCI ====== -->
+<section class="cat-section" id="dolci">
+  <div class="container">
+    <div class="cat-hd"><h2 class="cat-title">DOL<span>CI</span></h2></div>
+    <div class="items-grid cols-1">
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Dolci del giorno</span><span class="mi-desc">A seconda delle disponibilita - chiedi al personale</span></div>
+        <div class="mi-right"><span class="mi-price">€5,00</span><button class="mi-add" onclick="addItem(this,'Dolci del giorno',5.0)">+</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== BEVANDE ====== -->
+<section class="cat-section" id="bevande">
+  <div class="container">
+    <div class="cat-hd"><h2 class="cat-title">BEV<span>ANDE</span></h2><p class="cat-note">Analcoliche</p></div>
+    <div class="items-grid">
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Acqua Naturale</span></div>
+        <div class="mi-right"><span class="mi-price">€2,00</span><button class="mi-add" onclick="addItem(this,'Acqua Naturale',2.0)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Acqua Frizzante</span></div>
+        <div class="mi-right"><span class="mi-price">€2,00</span><button class="mi-add" onclick="addItem(this,'Acqua Frizzante',2.0)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Coca Cola</span></div>
+        <div class="mi-right"><span class="mi-price">€2,50</span><button class="mi-add" onclick="addItem(this,'Coca Cola',2.5)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Coca Cola Zero</span></div>
+        <div class="mi-right"><span class="mi-price">€2,50</span><button class="mi-add" onclick="addItem(this,'Coca Cola Zero',2.5)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Fanta</span></div>
+        <div class="mi-right"><span class="mi-price">€2,50</span><button class="mi-add" onclick="addItem(this,'Fanta',2.5)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Sprite</span></div>
+        <div class="mi-right"><span class="mi-price">€2,50</span><button class="mi-add" onclick="addItem(this,'Sprite',2.5)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Lemonsoda</span></div>
+        <div class="mi-right"><span class="mi-price">€2,50</span><button class="mi-add" onclick="addItem(this,'Lemonsoda',2.5)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">The alla Pesca</span></div>
+        <div class="mi-right"><span class="mi-price">€2,50</span><button class="mi-add" onclick="addItem(this,'The alla Pesca',2.5)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">The al Limone</span></div>
+        <div class="mi-right"><span class="mi-price">€2,50</span><button class="mi-add" onclick="addItem(this,'The al Limone',2.5)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Ginger Beer</span></div>
+        <div class="mi-right"><span class="mi-price">€3,00</span><button class="mi-add" onclick="addItem(this,'Ginger Beer',3.0)">+</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== DRINKLIST ====== -->
+<section class="cat-section" id="drinklist">
+  <div class="container">
+    <div class="cat-hd"><h2 class="cat-title">DRINK<span>LIST</span></h2><p class="cat-note">Cocktail & Spirits</p></div>
+    <div class="items-grid">
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Campari</span></div>
+        <div class="mi-right"><span class="mi-price">€3,00</span><button class="mi-add" onclick="addItem(this,'Campari',3.0)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Aperol Spritz</span></div>
+        <div class="mi-right"><span class="mi-price">€5,00</span><button class="mi-add" onclick="addItem(this,'Aperol Spritz',5.0)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Campari Spritz</span></div>
+        <div class="mi-right"><span class="mi-price">€5,00</span><button class="mi-add" onclick="addItem(this,'Campari Spritz',5.0)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">London Hill</span></div>
+        <div class="mi-right"><span class="mi-price">€6,00</span><button class="mi-add" onclick="addItem(this,'London Hill',6.0)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">London N.3</span></div>
+        <div class="mi-right"><span class="mi-price">€7,50</span><button class="mi-add" onclick="addItem(this,'London N.3',7.5)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Hendricks</span></div>
+        <div class="mi-right"><span class="mi-price">€7,50</span><button class="mi-add" onclick="addItem(this,'Hendricks',7.5)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Gin Mare</span></div>
+        <div class="mi-right"><span class="mi-price">€8,00</span><button class="mi-add" onclick="addItem(this,'Gin Mare',8.0)">+</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== BIRRE ====== -->
+<section class="cat-section" id="birre">
+  <div class="container">
+    <div class="cat-hd"><h2 class="cat-title">BIR<span>RE</span></h2></div>
+    <p class="eyebrow" style="margin-bottom:20px">Alla Spina</p>
+    <div class="items-grid cols-1">
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Birra Moretti 0,40cl</span><span class="mi-desc">4,6% vol.</span></div>
+        <div class="mi-right"><span class="mi-price">€4,00</span><button class="mi-add" onclick="addItem(this,'Birra Moretti 0,40cl',4.0)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Birra Moretti 0,20cl</span><span class="mi-desc">4,6% vol.</span></div>
+        <div class="mi-right"><span class="mi-price">€2,50</span><button class="mi-add" onclick="addItem(this,'Birra Moretti 0,20cl',2.5)">+</button></div>
+      </div>
+    </div>
+    <p class="eyebrow" style="margin-top:40px;margin-bottom:20px">In Bottiglia</p>
+    <div class="items-grid cols-1">
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Menabrea Bionda</span><span class="mi-desc">Chiara a Bassa Fermentazione - 4,8% vol. - Italia</span></div>
+        <div class="mi-right"><span class="mi-price">€3,00</span><button class="mi-add" onclick="addItem(this,'Menabrea Bionda',3.0)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Menabrea Rossa</span><span class="mi-desc">Doppio Malto - 7,5% vol. - Italia</span></div>
+        <div class="mi-right"><span class="mi-price">€3,50</span><button class="mi-add" onclick="addItem(this,'Menabrea Rossa',3.5)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Slalom</span><span class="mi-desc">Lager Strong - 9% vol. - Scozia</span></div>
+        <div class="mi-right"><span class="mi-price">€3,50</span><button class="mi-add" onclick="addItem(this,'Slalom',3.5)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Bjorne Beer</span><span class="mi-desc">Lager Strong - 8,3% vol. - Danimarca</span></div>
+        <div class="mi-right"><span class="mi-price">€3,50</span><button class="mi-add" onclick="addItem(this,'Bjorne Beer',3.5)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Estrella Daura Gluten Free</span><span class="mi-desc">Lager - 5% vol. - Spagna</span></div>
+        <div class="mi-right"><span class="mi-price">€4,50</span><button class="mi-add" onclick="addItem(this,'Estrella Daura Gluten Free',4.5)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Erdinger</span><span class="mi-desc">Weiss - 5,3% vol. - Germania</span></div>
+        <div class="mi-right"><span class="mi-price">€5,00</span><button class="mi-add" onclick="addItem(this,'Erdinger',5.0)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Chimay</span><span class="mi-desc">Abbazia/Trappiste - 7% vol. - Belgio</span></div>
+        <div class="mi-right"><span class="mi-price">€5,00</span><button class="mi-add" onclick="addItem(this,'Chimay',5.0)">+</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== VINI ====== -->
+<section class="cat-section" id="vini">
+  <div class="container">
+    <div class="cat-hd"><h2 class="cat-title">VI<span>NI</span></h2><p class="cat-note">In bottiglia - 75cl</p></div>
+    <p class="eyebrow" style="margin-bottom:20px">Rosati</p>
+    <div class="items-grid cols-1">
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Tramari</span><span class="mi-desc">Primitivo 100% - 13% vol. - Puglia</span></div>
+        <div class="mi-right"><span class="mi-price">€20,00</span><button class="mi-add" onclick="addItem(this,'Tramari',20.0)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Domodo</span><span class="mi-desc">Primitivo 100% - 12% vol. - Puglia</span></div>
+        <div class="mi-right"><span class="mi-price">€20,00</span><button class="mi-add" onclick="addItem(this,'Domodo',20.0)">+</button></div>
+      </div>
+    </div>
+    <p class="eyebrow" style="margin-top:40px;margin-bottom:20px">Rossi</p>
+    <div class="items-grid cols-1">
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Talo Negroamaro</span><span class="mi-desc">Negroamaro 100% - 13,5% vol. - Puglia</span></div>
+        <div class="mi-right"><span class="mi-price">€20,00</span><button class="mi-add" onclick="addItem(this,'Talo Negroamaro',20.0)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Talo Primitivo</span><span class="mi-desc">Primitivo 100% - 14% vol. - Puglia</span></div>
+        <div class="mi-right"><span class="mi-price">€20,00</span><button class="mi-add" onclick="addItem(this,'Talo Primitivo',20.0)">+</button></div>
+      </div>
+    </div>
+    <p class="eyebrow" style="margin-top:40px;margin-bottom:20px">Bianchi & Bollicine</p>
+    <div class="items-grid cols-1">
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Talo Chardonnay</span><span class="mi-desc">Chardonnay 100% - 13% vol. - Puglia</span></div>
+        <div class="mi-right"><span class="mi-price">€20,00</span><button class="mi-add" onclick="addItem(this,'Talo Chardonnay',20.0)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Prosecco</span><span class="mi-desc">Bollicine italiane</span></div>
+        <div class="mi-right"><span class="mi-price">€15,00</span><button class="mi-add" onclick="addItem(this,'Prosecco',15.0)">+</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== AMARI E DISTILLATI ====== -->
+<section class="cat-section" id="amari">
+  <div class="container">
+    <div class="cat-hd"><h2 class="cat-title">AMARI E <span>DISTILLATI</span></h2></div>
+    <div class="items-grid">
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Montenegro</span></div>
+        <div class="mi-right"><span class="mi-price">€2,50</span><button class="mi-add" onclick="addItem(this,'Montenegro',2.5)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Amaro del Capo</span></div>
+        <div class="mi-right"><span class="mi-price">€2,50</span><button class="mi-add" onclick="addItem(this,'Amaro del Capo',2.5)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Jagermeister</span></div>
+        <div class="mi-right"><span class="mi-price">€2,50</span><button class="mi-add" onclick="addItem(this,'Jagermeister',2.5)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Limoncello</span></div>
+        <div class="mi-right"><span class="mi-price">€2,50</span><button class="mi-add" onclick="addItem(this,'Limoncello',2.5)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Grappa 903 Barricata</span></div>
+        <div class="mi-right"><span class="mi-price">€3,50</span><button class="mi-add" onclick="addItem(this,'Grappa 903 Barricata',3.5)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Jameson</span></div>
+        <div class="mi-right"><span class="mi-price">€5,00</span><button class="mi-add" onclick="addItem(this,'Jameson',5.0)">+</button></div>
+      </div>
+      <div class="menu-item">
+        <div class="mi-info"><span class="mi-name">Diplomatico</span></div>
+        <div class="mi-right"><span class="mi-price">€5,00</span><button class="mi-add" onclick="addItem(this,'Diplomatico',5.0)">+</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ====== CART PANEL ====== -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="cart-panel" id="cartPanel">
+  <div class="cart-hd">
+    <span class="cart-title">Il tuo Carrello</span>
+    <button class="cart-close" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <p class="cart-empty">Il carrello è vuoto<br>Aggiungi qualcosa dal menu 🍔</p>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-total-row">
+      <span class="cart-total-lbl">Totale</span>
+      <span class="cart-total-val" id="cart-total">€0,00</span>
+    </div>
+    <button class="btn btn-wa" style="width:100%;justify-content:center;" onclick="checkoutCart()">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      Invia Ordine su WhatsApp
+    </button>
+  </div>
+</div>
+
+<!-- CART FLOATING BUTTON -->
+<button class="cart-btn" id="cartBtn" onclick="openCart()">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+  Carrello
+  <span class="cart-badge hidden" id="cartBadge">0</span>
+</button>
+
+<!-- ====== MODAL ORDINE ====== -->
+<div class="modal-overlay" id="orderModal">
+  <div class="modal">
+    <div class="modal-title">Completa l'ordine</div>
+    <p class="modal-sub">Inserisci i tuoi dati per inviare l'ordine via WhatsApp</p>
+
+    <div class="field">
+      <label>Modalità</label>
+      <div class="mode-toggle">
+        <button type="button" class="mode-btn active" id="mode-takeaway" onclick="setMode('takeaway')">🏃 Take Away</button>
+        <button type="button" class="mode-btn" id="mode-delivery" onclick="setMode('delivery')">🛵 Delivery</button>
+      </div>
+    </div>
+    <div class="field" id="field-address" style="display:none">
+      <label for="f-addr">Indirizzo di consegna</label>
+      <input type="text" id="f-addr" placeholder="Es. Via Roma 12, Terlizzi" autocomplete="street-address">
+    </div>
+    <div class="field">
+      <label for="f-name">Nome e Cognome</label>
+      <input type="text" id="f-name" placeholder="Es. Mario Rossi" autocomplete="name">
+    </div>
+    <div class="field">
+      <label for="f-phone">Numero di Telefono</label>
+      <input type="tel" id="f-phone" placeholder="Es. 333 1234567" autocomplete="tel">
+    </div>
+    <div class="field">
+      <label for="f-time" id="lbl-time">Orario di Ritiro</label>
+      <input type="time" id="f-time" min="12:00" max="23:00">
+    </div>
+    <p class="delivery-fee" id="delivery-fee-note"><span>🛵 Spese di consegna</span><span>+€2,00</span></p>
+    <div class="modal-btns">
+      <button class="btn btn-outline" onclick="closeModal()">Annulla</button>
+      <button class="btn btn-wa" onclick="confirmOrder()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        Invia su WhatsApp
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+const WA_NUMBER = '3917693475';
+const cart = [];
+
+/* NAV */
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', scrollY > 40);
+});
+let mobileOpen = false;
+document.getElementById('navToggle').addEventListener('click', () => {
+  const links = document.getElementById('navLinks');
+  mobileOpen = !mobileOpen;
+  if (mobileOpen) {
+    Object.assign(links.style, {display:'flex',flexDirection:'column',position:'absolute',
+      top:'100%',left:'0',right:'0',background:'rgba(8,8,8,.98)',
+      padding:'24px',gap:'16px',borderTop:'1px solid var(--border)'});
+  } else {
+    links.style.display = '';
+  }
+});
+
+/* ADD ITEM — con flash verde */
+function addItem(btn, name, price) {
+  const idx = cart.findIndex(i => i.name === name);
+  if (idx >= 0) { cart[idx].qty++; } else { cart.push({ name, price, qty: 1 }); }
+  renderCart();
+  openCart();
+  btn.classList.add('added');
+  btn.textContent = '✓';
+  setTimeout(() => { btn.classList.remove('added'); btn.textContent = '+'; }, 900);
+}
+
+/* CART */
+function openCart()  { document.getElementById('cartPanel').classList.add('open'); document.getElementById('cartOverlay').classList.add('open'); }
+function closeCart() { document.getElementById('cartPanel').classList.remove('open'); document.getElementById('cartOverlay').classList.remove('open'); }
+
+function updateQty(idx, delta) {
+  cart[idx].qty += delta;
+  if (cart[idx].qty <= 0) cart.splice(idx, 1);
+  renderCart();
+}
+function removeFromCart(idx) { cart.splice(idx, 1); renderCart(); }
+
+function renderCart() {
+  const container = document.getElementById('cartItems');
+  const badge     = document.getElementById('cartBadge');
+  const totalEl   = document.getElementById('cart-total');
+  const totalQty  = cart.reduce((s,i) => s + i.qty, 0);
+  const totalPrice= cart.reduce((s,i) => s + i.price * i.qty, 0);
+
+  badge.textContent = totalQty;
+  badge.classList.toggle('hidden', totalQty === 0);
+  totalEl.textContent = '€' + totalPrice.toFixed(2).replace('.',',');
+
+  if (!cart.length) {
+    container.innerHTML = '<p class="cart-empty">Il carrello è vuoto<br>Aggiungi qualcosa dal menu 🍔</p>';
+    return;
+  }
+  container.innerHTML = cart.map((item, idx) => `
+    <div class="cart-item">
+      <div class="cart-item-hd">
+        <span class="cart-item-name">${item.name}</span>
+        <span class="cart-item-price">€${(item.price * item.qty).toFixed(2).replace('.',',')}</span>
+      </div>
+      <div class="cart-item-details">€${item.price.toFixed(2).replace('.',',')} cad.</div>
+      <div class="cart-item-ft">
+        <div class="qty-ctrl">
+          <button class="qty-btn" onclick="updateQty(${idx},-1)">−</button>
+          <span class="qty-val">${item.qty}</span>
+          <button class="qty-btn" onclick="updateQty(${idx},1)">+</button>
+        </div>
+        <button class="cart-remove" onclick="removeFromCart(${idx})">Rimuovi</button>
+      </div>
+    </div>`).join('');
+}
+
+/* CHECKOUT */
+function checkoutCart() { if (cart.length) openModal(); }
+
+/* MODAL */
+let orderMode = 'takeaway';
+
+function setMode(mode) {
+  orderMode = mode;
+  document.getElementById('mode-takeaway').classList.toggle('active', mode === 'takeaway');
+  document.getElementById('mode-delivery').classList.toggle('active', mode === 'delivery');
+  document.getElementById('field-address').style.display = mode === 'delivery' ? '' : 'none';
+  document.getElementById('delivery-fee-note').style.display = mode === 'delivery' ? 'flex' : 'none';
+  document.getElementById('lbl-time').textContent = mode === 'delivery' ? 'Orario di Consegna' : 'Orario di Ritiro';
+}
+
+function openModal()  { document.getElementById('orderModal').classList.add('open'); }
+function closeModal() {
+  document.getElementById('orderModal').classList.remove('open');
+  ['f-name','f-phone','f-time','f-addr'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.classList.remove('err');
+  });
+}
+document.getElementById('orderModal').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
+
+function confirmOrder() {
+  const name  = document.getElementById('f-name').value.trim();
+  const phone = document.getElementById('f-phone').value.trim();
+  const time  = document.getElementById('f-time').value;
+  const addr  = orderMode === 'delivery' ? document.getElementById('f-addr').value.trim() : null;
+
+  document.getElementById('f-name').classList.toggle('err', !name);
+  document.getElementById('f-phone').classList.toggle('err', !phone);
+  document.getElementById('f-time').classList.toggle('err', !time);
+  if (orderMode === 'delivery') document.getElementById('f-addr').classList.toggle('err', !addr);
+
+  if (!name || !phone || !time || (orderMode === 'delivery' && !addr)) return;
+  closeModal();
+
+  const lines = cart.map(i =>
+    `• ${i.qty}x ${i.name} — €${(i.price * i.qty).toFixed(2).replace('.',',')}`
+  ).join('\n');
+  const subtotal = cart.reduce((s,i) => s + i.price * i.qty, 0);
+  const deliveryFee = orderMode === 'delivery' ? 2 : 0;
+  const total = subtotal + deliveryFee;
+  const modalita = orderMode === 'delivery' ? `Delivery — ${addr}` : 'Take Away';
+
+  const msg =
+`*Ordine Buns 50*
+
+Nome: ${name}
+Telefono: ${phone}
+Modalità: ${modalita}
+Orario: ${time}
+
+${lines}${deliveryFee ? '\n\n• Spese di consegna — €2,00' : ''}
+
+*Totale: €${total.toFixed(2).replace('.',',')}*
+
+Grazie!`;
+
+  window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+  cart.length = 0;
+  renderCart();
+}
+
+/* ACTIVE TAB ON SCROLL */
+const sections = document.querySelectorAll('.cat-section');
+const tabs = document.querySelectorAll('.mp-tab');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      tabs.forEach(t => t.classList.remove('active'));
+      const active = document.querySelector(`.mp-tab[href="#${e.target.id}"]`);
+      if (active) {
+        active.classList.add('active');
+        active.scrollIntoView({ behavior:'smooth', block:'nearest', inline:'center' });
+      }
+    }
+  });
+}, { rootMargin: '-30% 0px -60% 0px' });
+sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>

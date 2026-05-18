@@ -5,7 +5,7 @@
   --border:#2a2a2a;--text:#f0f0f0;--muted:#999;--white:#fff;
 }
 html{scroll-behavior:smooth}
-body{background:var(--black);color:var(--text);font-family:'Inter',sans-serif;font-size:16px;line-height:1.6;overflow-x:hidden}
+body{background:var(--black);color:var(--text);font-family:'Inter',sans-serif;font-size:16px;line-height:1.6;overflow-x:clip}
 ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--black)}::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px}
 
 /* UTILS */
@@ -98,6 +98,8 @@ nav.scrolled{background:rgba(8,8,8,.96);backdrop-filter:blur(12px);padding:12px 
 .card-img{height:220px;overflow:hidden;position:relative}
 .card-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
 .menu-card:hover .card-img img{transform:scale(1.06)}
+.menu-card[data-cat="burger"] .card-img{height:280px}
+.menu-card[data-cat="burger"] .card-img img{object-position:center 30%}
 .card-badge{position:absolute;top:12px;right:12px;background:var(--gold);color:#fff;font-family:'Oswald',sans-serif;font-size:1rem;font-weight:700;padding:4px 12px;border-radius:4px}
 .card-body{padding:24px}
 .card-name{font-family:'Lilita One',cursive;font-size:1.35rem;font-weight:400;text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px}
@@ -198,6 +200,7 @@ footer{padding:36px 0;border-top:1px solid var(--border);text-align:center}
   #menu,#builder,#gallery,#promo,#promo-bacon,#contacts{padding:72px 0}
   .hero-content{padding:110px 0 64px}
   .card-img{height:190px}
+  .menu-card[data-cat="burger"] .card-img{height:240px}
   .menu-tabs{width:100%;overflow-x:auto;flex-wrap:nowrap;padding-bottom:6px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
   .menu-tabs::-webkit-scrollbar{display:none}
   .menu-tab{flex-shrink:0}
@@ -213,6 +216,7 @@ footer{padding:36px 0;border-top:1px solid var(--border);text-align:center}
   .promo-combo-grid{gap:8px}
   .promo-combo-item{min-width:88px;padding:10px 8px 14px}
   .card-img{height:170px}
+  .menu-card[data-cat="burger"] .card-img{height:210px}
   .modal{padding:24px 18px}
   .modal-btns{flex-direction:column}
   .modal-btns .btn{width:100%;justify-content:center}
@@ -280,5 +284,10 @@ footer{padding:36px 0;border-top:1px solid var(--border);text-align:center}
 .field input,.field select{background:var(--card-h);border:1px solid var(--border);border-radius:6px;padding:12px 14px;color:var(--text);font-family:'Inter',sans-serif;font-size:.9rem;outline:none;transition:border-color .2s}
 .field input:focus,.field select:focus{border-color:var(--gold)}
 .field input.err,.field select.err{border-color:#e74c3c}
+.mode-toggle{display:flex;gap:8px}
+.mode-btn{flex:1;padding:11px;border-radius:6px;font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;cursor:pointer;border:1px solid var(--border);background:transparent;color:var(--muted);transition:all .2s;font-family:'Inter',sans-serif}
+.mode-btn.active{background:var(--gold);border-color:var(--gold);color:#fff}
+.delivery-fee{display:none;justify-content:space-between;align-items:center;padding:10px 14px;background:rgba(204,0,0,.08);border:1px solid rgba(204,0,0,.2);border-radius:6px;font-size:.82rem;color:var(--muted);margin-bottom:4px}
+.delivery-fee span:last-child{font-family:'Lilita One',cursive;color:var(--gold);font-size:1rem}
 .modal-btns{display:flex;gap:12px;margin-top:8px}
 .modal-btns .btn{flex:1;justify-content:center}
